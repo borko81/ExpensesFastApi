@@ -1,0 +1,49 @@
+* {
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
+
+.custom_container {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.custom_upper {
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.2em;
+	color:  black;
+}
+
+.custom_black_a:hover {
+	text-decoration: underline;
+	color: #eee;
+}	
+
+.custom_border {
+	
+}
+
+#mymodal {
+	width: 50%;
+	margin-top: -150px;
+	border: none;
+	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+	display: none;
+}
+
+.close_modal {
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.custom_li a {
+	color:  black;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.custom_nav_li_width {
+	
+}

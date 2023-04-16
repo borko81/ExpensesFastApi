@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{{ url_for('static', path='/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', path='/main.css') }}" rel="stylesheet">
+		<title>{{title}}</title>
+	</head>
+	<body>
+	{% block top_js %}{% endblock top_js %}
+	<div class="custom_container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a href="{{ url_for('index') }}" class="navbar-brand custom_black_a">Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ url_for('show_all_casa') }}" class="navbar-brand custom_black_a">Каса</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ url_for('show_all_objs') }}" class="navbar-brand custom_black_a">Обект</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ url_for('show_all_clients') }}" class="navbar-brand custom_black_a">Клиенти</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ url_for('show_all_names') }}" class="navbar-brand custom_black_a">Приход/Разход</a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ url_for('show_all_action') }}" class="navbar-brand custom_black_a">Действие</a>
+					</li>
+				</ul>
+				<a href="{{ url_for('logout') }}" class="custom_upper">Logout</a>
+			</div>
+		</nav>
+		<!-- grid -->
+		<div class="row mt-3">
+			<div class="main col-lg-11 custom_border">
+				{% block main %}1{% endblock %}
+			</div>
+			<div class="menu col-lg-1 custom_border">
+				{% block menu %}2{% endblock %}
+			</div>
+		</div>
+	</div>
+{% block bottom_js %}{% endblock bottom_js %}
+</body>
+</html>

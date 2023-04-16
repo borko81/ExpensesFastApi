@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block main %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-2 ">
+				<li class="nav-item mr-2 custom_nav_li_width">
+					<select name="bank_cash" id="bank_cash">
+						<option value="-">Каса</option>
+						<option value="bank">Bank</option>
+						<option value="cash">Cash</option>
+					</select>
+				</li>
+				<li class="nav-item mr-2 custom_nav_li_width">
+					<select name="income_outcome " id="income_outcome">
+						<option value="bank">Приход/Разход</option>
+						<option value="bank">Захранване</option>
+						<option value="cash">Ток</option>
+					</select>
+				</li>
+				<li class="nav-item custom_nav_li_width">
+					<select name="obj" id="obj">
+						<option value="bank">Обект</option>
+						<option value="bank">Градина</option>
+						<option value="cash">Вътрешна час</option>
+					</select>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<table class="table table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>Дата</th>
+				<th>Приход/Разход</th>
+				<th>Каса</th>
+				<th>Приход</th>
+				<th>Разход</th>
+				<th>Салдо</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>01.01.2023</td>
+				<td>Захранване</td>
+				<td>Банка</td>
+				<td>0</td>
+				<td>1000</td>
+				<td>1000</td>
+			</tr>
+			<tr>
+				<td>01.01.2023</td>
+				<td>Наме</td>
+				<td>Брои</td>
+				<td>0</td>
+				<td>2000</td>
+				<td>-1000</td>
+			</tr>
+			<tr>
+				<td>01.01.2023</td>
+				<td>Захранване</td>
+				<td>Банка</td>
+				<td>0</td>
+				<td>1000</td>
+				<td>0</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Modal dialog -->
+	<dialog id="mymodal">
+	<div class="d-flex justify-content-between">
+		<h3 class="modalh3"></h3>
+		<span class="close_modal float-right">X</span>
+	</div>
+	<form action="" method="POST" autocomplete="off">
+		<input type="text" name="kasa_name" autocomplete="off" class="form-control">
+		<input type="submit" value="Submit" id="ok_button" class="btn btn-sm btn-success form-control mt-3">
+	</form>
+	</dialog>
+{% endblock main %}
+{% block menu %}
+	<ul class="list-group">
+		<li class="list-group-item custom_li"><a href="">Зарежда</a></li>
+		<li class="list-group-item custom_li"><a href="" id="show_modal">Нов</a></li>
+		<li class="list-group-item custom_li"><a href="" id="edit_modal">Редакция</a></li>
+	</ul>
+{% endblock menu %}
+{% block bottom_js %}
+	<script>
+		const custom_modal = document.querySelector("#mymodal");
+		const open_modal = document.querySelector("#show_modal");
+		const close_modal = document.querySelector(".close_modal");
+		const edit_modal = document.querySelector("#edit_modal");
+		let modalh3 = document.querySelector(".modalh3");
+		open_modal.addEventListener("click", function(x) {
+			x.preventDefault()
+			custom_modal.style.display = 'block'
+			modalh3.innerHTML = "Create New"
+		})
+		edit_modal.addEventListener("click", function(x) {
+			x.preventDefault()
+			custom_modal.style.display = 'block'
+			modalh3.innerHTML = "Open for Edit"
+		})
+		// Close modal
+		close_modal.addEventListener("click", () => {
+			custom_modal.style.display = 'none'
+		})
+	</script>
+{% endblock bottom_js %}

@@ -1,27 +1,31 @@
+"""
+Type Floor One, Garden and so on
+"""
+
 from fastapi import APIRouter
 
-clients_app = APIRouter(prefix="/client")
+obj_app = APIRouter(prefix="/obj")
 
 
-@clients_app.get("/", tags=["client"])
-async def show_all_clients():
+@obj_app.get("/", tags=["obj"])
+async def show_all_objs():
     """Return all clients"""
     return {"message": "This is all clients"}
 
 
-@clients_app.post("/", tags=["client"])
-async def new_client():
+@obj_app.post("/", tags=["obj"])
+async def new_obj():
     """Return all clients"""
     return {"message": "New clients"}
 
 
-@clients_app.put("/{client_id}", tags=["client"])
-async def edit_client():
+@obj_app.put("/{obj_id}", tags=["obj"])
+async def edit_obj():
     """Return all clients"""
     return {"message": "Edit clients"}
 
 
-@clients_app.delete("/{client_id}", tags=["client"])
+@obj_app.delete("/{obj_id}", tags=["obj"])
 async def delete_client():
     """Return all clients"""
     return {"message": "Delete clients"}

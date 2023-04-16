@@ -1,22 +1,26 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 
 login_app = APIRouter(prefix="/login")
+templates = Jinja2Templates(directory="templates")
 
 
-@login_app.get("/login", tags=["login"])
-async def get_login():
+@login_app.get("/", tags=["login"], response_class=HTMLResponse)
+async def get_login(request: Request):
     """Login get Page"""
-    return {"message": "Login GET"}
+    return templates.TemplateResponse("login.html", {"request": request})
 
 
-@login_app.post("/login", tags=["login"])
-async def post_login():
+@login_app.post("/", tags=["login"])
+async def post_login(request: Request):
     """Login Post page"""
     return {"message": "Login POST"}
 
 
-@login_app.post("/logout", tags=["login"])
-async def logout():
+@login_app.get("/exit", tags=["login"])
+async def logout(request: Request):
     """Logout url"""
-    return {"message": "Logout page"}
+    return templates.TemplateResponse("login.html", {"request": request})
