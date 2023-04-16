@@ -2,15 +2,20 @@
 Type Floor One, Garden and so on
 """
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
+
+templates = Jinja2Templates(directory="templates")
 
 obj_app = APIRouter(prefix="/obj")
 
 
 @obj_app.get("/", tags=["obj"])
-async def show_all_objs():
+async def show_all_objs(request: Request):
     """Return all clients"""
-    return {"message": "This is all clients"}
+    return templates.TemplateResponse(
+        "objs.html", {"request": request, "title": "Обекти"}
+    )
 
 
 @obj_app.post("/", tags=["obj"])

@@ -1,11 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Обекти</title>
-	</head>
-	<body>
-		
-	</body>
-</html>
+{% extends 'base.html' %}
+{% block main %}
+	<table class="table table-striped">
+		<thead class="table-dark">
+			<tr>
+				<th>Име</th>
+				<th>Активен</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Вътрешна час</td>
+				<td>Да</td>
+				<td><button class="btn btn-sm btn-success">Edit</button></td>
+				<td><button class="btn btn-sm btn-danger">Delete</button></td>
+			</tr>
+			<tr>
+				<td>Градина</td>
+				<td>Да</td>
+				<td><button class="btn btn-sm btn-success">Edit</button></td>
+				<td><button class="btn btn-sm btn-danger">Delete</button></td>
+			</tr>
+			<tr>
+				<td>Кухня</td>
+				<td>Да</td>
+				<td><button class="btn btn-sm btn-success">Edit</button></td>
+				<td><button class="btn btn-sm btn-danger">Delete</button></td>
+			</tr>
+			<tr>
+				<td>Бар</td>
+				<td>Не</td>
+				<td><button class="btn btn-sm btn-success">Edit</button></td>
+				<td><button class="btn btn-sm btn-danger">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- Modal dialog -->
+	<dialog id="mymodal">
+	<div class="d-flex justify-content-between">
+		<h3 class="modalh3"></h3>
+		<span class="close_modal float-right">X</span>
+	</div>
+	<form action="" method="POST" autocomplete="off">
+		<input type="text" name="kasa_name" autocomplete="off" class="form-control mt-2" placeholder="Enter Name">
+		<select name="" id="is_аctive" class="form-control my-2">
+			<option value="1">Активен</option>
+			<option value="2">Не активен</option>
+		</select>
+		<input type="submit" value="Submit" id="ok_button" class="btn btn-sm btn-success form-control mt-3">
+	</form>
+	</dialog>
+{% endblock main %}
+{% block menu %}
+	<ul class="list-group">
+		<li class="list-group-item custom_li"><a href="">Зарежда Всички</a></li>
+		<li class="list-group-item custom_li"><a href="">Зарежда Активни</a></li>
+		<li class="list-group-item custom_li"><a href="">Зарежда Неактивни</a></li>
+		<li class="list-group-item custom_li"><a href="" id="show_modal">Нов</a></li>
+	</ul>
+{% endblock menu %}
+{% block bottom_js %}
+	<script>
+		const custom_modal = document.querySelector("#mymodal");
+		const open_modal = document.querySelector("#show_modal");
+		const close_modal = document.querySelector(".close_modal");
+		let modalh3 = document.querySelector(".modalh3");
+		open_modal.addEventListener("click", function(x) {
+			x.preventDefault()
+			custom_modal.style.display = 'block'
+			modalh3.innerHTML = "Create New"
+		})
+		// Close modal
+		close_modal.addEventListener("click", () => {
+			custom_modal.style.display = 'none'
+		})
+	</script>
+{% endblock bottom_js %}

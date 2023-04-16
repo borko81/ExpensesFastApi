@@ -7,7 +7,6 @@ from routers import (
     login_api,
     work_with_types,
     clients,
-    store_names,
     actions,
     objs,
     kasa,
@@ -25,8 +24,6 @@ app.include_router(login_api.login_app)
 app.include_router(work_with_types.types_app)
 # Client router: person, client
 app.include_router(clients.clients_app)
-# Name of store supply
-app.include_router(store_names.names_of_store)
 # Actions
 app.include_router(actions.actions)
 # Obj's
