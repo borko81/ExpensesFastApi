@@ -12,6 +12,10 @@ from routers import (
     kasa,
 )
 
+import db.models
+from db.database import engine
+
+db.models.Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 
